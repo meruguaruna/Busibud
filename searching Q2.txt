@@ -1,0 +1,33 @@
+def SearchingChallenge(strArr):
+  matrix = [list(map(int, row)) for row in strArr]
+  rows = len(matrix)
+  cols = len(matrix[0])
+  visit = [[False for _ in range(cols)] for _ in range(rows)]
+
+  def dfs(r, c):
+    if r < 0 or r>=rows or c < 0 or c>= cols:
+      return
+    if visit[r][c] or matrix[r][c] == 1:
+      return
+    visit[r][c] = True
+
+    dfs(r + 1, c) #down
+    dfs(r - 1, c) #up
+    dfs(r, c + 1) #right
+    dfs(r, c - 1) #left
+
+  max_count = 0
+  for r in range(rows):
+    for c in range(cols):
+      if matrix[r][c] == 0 and not visit[r][c]:
+        max_count += 1
+        dfs(r, c)
+  return max_count
+
+
+
+    # code goes here
+  #return strArr
+
+# keep this function call here 
+print(SearchingChallenge(input()))

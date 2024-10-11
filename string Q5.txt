@@ -1,0 +1,20 @@
+def StringChallenge(strParam):
+  characters = {}
+  count = 0
+  for i, char in enumerate(strParam):
+    if char in characters:
+      start = characters[char] + 1
+      end = i
+      substring = strParam[start:end]
+      uc = set(substring)
+      count = max(count, len(uc))
+    else:
+      characters[char] = i
+
+  return count
+
+  # code goes here
+  #return strParam
+
+# keep this function call here 
+print(StringChallenge(input()))

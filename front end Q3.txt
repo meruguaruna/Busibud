@@ -1,0 +1,14 @@
+import $ from "jquery";
+
+const rootApp = document.getElementById("root");
+rootApp.innerHTML = '<button>ON</button>';
+rootApp.innerHTML = '<button id="toggleButton">OFF</button>';
+const toggleButton = document.getElementById("toggleButton");
+toggleButton.addEventListener("click", function()
+{
+  if (toggleButton.innerText === "OFF") {
+    toggleButton.innerText = "ON";
+  } else {
+    toggleButton.innerText = "OFF";
+  }
+});

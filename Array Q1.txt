@@ -1,0 +1,37 @@
+def ArrayChallenge(strArr):
+  pc = {}
+  cc = {}
+  for join in strArr:
+    join = join.strip("()")
+    child,parent = map(int, join.split(","))
+    if child in pc:
+      pc[child] += 1
+    else:
+      pc[child] = 1
+
+    if parent not in cc:
+      cc[parent] = 0
+
+    cc[parent] += 1
+
+    if cc[parent] > 2:
+      return "false"
+
+  for child in pc:
+    if pc[child] > 1:
+      return "false"
+
+  rc = set(cc.keys()) - set(pc.keys())
+
+  if len(rc) != 1:
+    return "false"
+
+  return "true"
+#print(ArrayChallenge(strArr))
+
+
+  # code goes here
+  #return strArr
+
+# keep this function call here 
+print(ArrayChallenge(input()))
